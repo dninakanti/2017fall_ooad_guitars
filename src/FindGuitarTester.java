@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
 /**
  * This class used to test Guitar and Inventory
  * @author divya
@@ -14,8 +18,59 @@ public static void main(String[] args) {
     // Set up Rick's guitar inventory
     Inventory inventory = new Inventory();
     initializeInventory(inventory);
+    System.out.println("Select option A or B");
+    System.out.println("A) Select search by 1) builder, 2)model 3)type 4) backWood 5) topwood");
+    System.out.println("B) Search By price");
+    Scanner scan = new Scanner(System.in);
+    String option = scan.nextLine();
+    if("A".equalsIgnoreCase(option)) {
+    	System.out.println("Select search by 1) builder, 2)model 3)type 4) backWood 5) topwood - select option using numbers with comma separted(Ex: 2,5)");
+    	String seacrhOptions = scan.nextLine();
+    	String seacrhOption[] = seacrhOptions.split(",");
+    	Guitar searchGuitar = new Guitar();
+    	for(String searchBy:seacrhOption) {
+    	switch(searchBy.trim()) {
+    		case "1": 
+    			System.out.println("Please enter builder");
+    			String builder = scan.nextLine();
+    			searchGuitar.setBuilder(builder);
+    			break;
+    		case "2": System.out.println("Please enter model");
+    			String model = scan.nextLine();
+    			searchGuitar.setModel(model);			
+    		break;
+    		case "3": System.out.println("Please enter type");
+    			String type = scan.nextLine();
+    			searchGuitar.setType(type);	
+    		break;
+    		case "4": System.out.println("Please enter backWood");
+    			String backWood = scan.nextLine();
+    			searchGuitar.setBackWood(backWood);
+    		break;
+    		case "5": System.out.println("Please enter topwood");
+    			String topwood = scan.nextLine();
+    			searchGuitar.setTopWood(topwood);
+    		break;
+    	}
+    
+    	}
+    	System.out.println("Search "+searchGuitar.toString());
+    	List<Guitar> guitars = inventory.searchAll(searchGuitar);
+    	for(Guitar guitar:guitars) {
+    		System.out.println(guitar.toString());
+    	}
 
-    Guitar whatErinLikes = new Guitar("", 0, "Fender", "Stratocastor", 
+    }else if("B".equalsIgnoreCase(option)) {
+    	 System.out.println("Search By price, Please enter price");
+    	 double price = scan.nextDouble();
+    	 List<Guitar> guitars = inventory.searchByPrice(price);
+    	 
+    	 for(Guitar guitar:guitars) {
+     		System.out.println(guitar.toString());
+     	}
+    	 
+    }
+    /*Guitar whatErinLikes = new Guitar("", 0, "Fender", "Stratocastor", 
                                       "electric", "Alder", "Alder");
     Guitar guitar = inventory.search(whatErinLikes);
     if (guitar != null) {
@@ -27,7 +82,7 @@ public static void main(String[] args) {
         guitar.getPrice() + "!");
     } else {
       System.out.println("Sorry, Erin, we have nothing for you.");
-    }
+    }*/
   }
 
 /**

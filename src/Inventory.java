@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -82,4 +83,55 @@ public class Inventory {
     }
     return null;
   }
+  
+  /**
+   * Search by Guitar using Guitar object with parameter(builder,model,type,backWood and topWood) 
+   * @param searchGuitar
+   * @return Guitar or null
+   */
+	public List<Guitar> searchAll(Guitar searchGuitar) {
+		List<Guitar> returnGuitars = new ArrayList<>();
+		for (Guitar guitar : guitars) {
+			if ((searchGuitar.getBuilder() == null || "".equals(searchGuitar.getBuilder().trim()))
+					&& (searchGuitar.getModel() == null || "".equals(searchGuitar.getModel().trim()))
+					&& (searchGuitar.getType() == null || "".equals(searchGuitar.getType().trim()))
+					&& (searchGuitar.getBackWood() == null || "".equals(searchGuitar.getBackWood().trim()))
+					&& (searchGuitar.getTopWood() == null || "".equals(searchGuitar.getTopWood().trim()))) {
+				continue;
+			}
+			boolean isBuilder = true;
+			boolean isModel = true;
+			boolean isType = true;
+			boolean isBackWood = true;
+			boolean isTopWood = true;
+			String builder = searchGuitar.getBuilder();
+			if ((builder != null) && (!builder.equals("")) && (!builder.equals(guitar.getBuilder())))
+				isBuilder = false;
+			String model = searchGuitar.getModel();
+			if ((model != null) && (!model.equals("")) && (!model.equals(guitar.getModel())))
+				isModel = false;
+			String type = searchGuitar.getType();
+			if ((type != null) && (!type.equals("")) && (!type.equals(guitar.getType())))
+				isType = false;
+			String backWood = searchGuitar.getBackWood();
+			if ((backWood != null) && (!backWood.equals("")) && (!backWood.equals(guitar.getBackWood())))
+				isBackWood = false;
+			String topWood = searchGuitar.getTopWood();
+			if ((topWood != null) && (!topWood.equals("")) && (!topWood.equals(guitar.getTopWood())))
+				isTopWood = false;
+			if (isBuilder && isModel && isType && isBackWood && isTopWood) {
+				returnGuitars.add(guitar);
+			}
+		}
+		return returnGuitars;
+	}
+
+public List<Guitar> searchByPrice(double price) {
+	List<Guitar> returnGuitars = new ArrayList<>();
+	for (Guitar guitar : guitars) {
+		if(price ==guitar.getPrice())
+		returnGuitars.add(guitar);
+		}
+	return returnGuitars;
+}
 }
