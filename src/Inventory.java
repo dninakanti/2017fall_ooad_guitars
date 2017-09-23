@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 /**
  * This class to add, search and retrieve the guitars from Inventory
- * @author divya
+ * @author Divya Ninakanti and Nitesh Vuppala
  * @since  09/11/2017
  *  
  *
@@ -26,11 +26,8 @@ public class Inventory {
    * @param backWood
    * @param topWood
    */
-  public void addGuitar(String serialNumber, double price,
-                        String builder, String model,
-                        String type, String backWood, String topWood) {
-    Guitar guitar = new Guitar(serialNumber, price, builder,
-                               model, type, backWood, topWood);
+  public void addGuitar(String serialNumber, double price,GuitarSpec guitarSpec) {
+    Guitar guitar = new Guitar(serialNumber, price, guitarSpec);
     guitars.add(guitar);
   }
   
@@ -55,29 +52,37 @@ public class Inventory {
    * @return Guitar or null
    */
   public Guitar search(Guitar searchGuitar) {
-    for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
+	  GuitarSpec searchGuitarSpec = null;
+	  if(searchGuitar.getGuitarSpec()!=null) {
+	  searchGuitarSpec = searchGuitar.getGuitarSpec();
+	  }else {
+		  return null;
+	  }
+	  for (Iterator<Guitar> i = guitars.iterator(); i.hasNext(); ) {
       Guitar guitar = (Guitar)i.next();
       // Ignore serial number since that's unique
       // Ignore price since that's unique
-      String builder = searchGuitar.getBuilder();
+      GuitarSpec guitarSpec = guitar.getGuitarSpec();
+      
+      String builder = searchGuitarSpec.getBuilder();
       if ((builder != null) && (!builder.equals("")) &&
-          (!builder.equals(guitar.getBuilder())))
+          (!builder.equals(guitarSpec.getBuilder())))
         continue;
-      String model = searchGuitar.getModel();
+      String model = searchGuitarSpec.getModel();
       if ((model != null) && (!model.equals("")) &&
-          (!model.equals(guitar.getModel())))
+          (!model.equals(guitarSpec.getModel())))
         continue;
-      String type = searchGuitar.getType();
+      String type = searchGuitarSpec.getType();
       if ((type != null) && (!type.equals("")) &&
-          (!type.equals(guitar.getType())))
+          (!type.equals(guitarSpec.getType())))
         continue;
-      String backWood = searchGuitar.getBackWood();
+      String backWood = searchGuitarSpec.getBackWood();
       if ((backWood != null) && (!backWood.equals("")) &&
-          (!backWood.equals(guitar.getBackWood())))
+          (!backWood.equals(guitarSpec.getBackWood())))
         continue;
-      String topWood = searchGuitar.getTopWood();
+      String topWood = searchGuitarSpec.getTopWood();
       if ((topWood != null) && (!topWood.equals("")) &&
-          (!topWood.equals(guitar.getTopWood())))
+          (!topWood.equals(guitarSpec.getTopWood())))
         continue;
       return guitar;
     }
@@ -89,37 +94,18 @@ public class Inventory {
    * @param searchGuitar
    * @return Guitar or null
    */
-	public List<Guitar> searchAll(Guitar searchGuitar) {
+	public List<Guitar> searchByGuitarSpec(GuitarSpec seacrhGuitarSpec) {
 		List<Guitar> returnGuitars = new ArrayList<>();
+		if (seacrhGuitarSpec == null || (seacrhGuitarSpec.getBuilder() == null || "".equals(seacrhGuitarSpec.getBuilder().trim()))
+				&& (seacrhGuitarSpec.getModel() == null || "".equals(seacrhGuitarSpec.getModel().trim()))
+				&& (seacrhGuitarSpec.getType() == null || "".equals(seacrhGuitarSpec.getType().trim()))
+				&& (seacrhGuitarSpec.getBackWood() == null || "".equals(seacrhGuitarSpec.getBackWood().trim()))
+				&& (seacrhGuitarSpec.getTopWood() == null || "".equals(seacrhGuitarSpec.getTopWood().trim()))) {
+			return returnGuitars;
+		}
 		for (Guitar guitar : guitars) {
-			if ((searchGuitar.getBuilder() == null || "".equals(searchGuitar.getBuilder().trim()))
-					&& (searchGuitar.getModel() == null || "".equals(searchGuitar.getModel().trim()))
-					&& (searchGuitar.getType() == null || "".equals(searchGuitar.getType().trim()))
-					&& (searchGuitar.getBackWood() == null || "".equals(searchGuitar.getBackWood().trim()))
-					&& (searchGuitar.getTopWood() == null || "".equals(searchGuitar.getTopWood().trim()))) {
-				continue;
-			}
-			boolean isBuilder = true;
-			boolean isModel = true;
-			boolean isType = true;
-			boolean isBackWood = true;
-			boolean isTopWood = true;
-			String builder = searchGuitar.getBuilder();
-			if ((builder != null) && (!builder.equals("")) && (!builder.equals(guitar.getBuilder())))
-				isBuilder = false;
-			String model = searchGuitar.getModel();
-			if ((model != null) && (!model.equals("")) && (!model.equals(guitar.getModel())))
-				isModel = false;
-			String type = searchGuitar.getType();
-			if ((type != null) && (!type.equals("")) && (!type.equals(guitar.getType())))
-				isType = false;
-			String backWood = searchGuitar.getBackWood();
-			if ((backWood != null) && (!backWood.equals("")) && (!backWood.equals(guitar.getBackWood())))
-				isBackWood = false;
-			String topWood = searchGuitar.getTopWood();
-			if ((topWood != null) && (!topWood.equals("")) && (!topWood.equals(guitar.getTopWood())))
-				isTopWood = false;
-			if (isBuilder && isModel && isType && isBackWood && isTopWood) {
+			GuitarSpec guitarSpec = guitar.getGuitarSpec();
+			if(guitarSpec.match(seacrhGuitarSpec)){
 				returnGuitars.add(guitar);
 			}
 		}
