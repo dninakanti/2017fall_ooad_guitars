@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 /**
@@ -50,20 +52,30 @@ public class TestGuitar {
 
 	@Test
 	public void testSearch() {
-		Guitar searchGuitar = new Guitar("", 0.0, new GuitarSpec(Builder.GIBSON.name(), null, null, null, null));
-		Guitar guitar = inventory.search(searchGuitar);
+		GuitarSpec searchGuitar = new GuitarSpec(Builder.GIBSON.name(), null, null, null, null);
+		List<Guitar> guitars = inventory.search(searchGuitar);
+		System.out.println("Test what happens if you enter Gibson as a builder and nothing else :");
+		for(Guitar guitar:guitars) {
 		System.out.println(guitar != null ? guitar.toString() : null);
-		Guitar searchGuitarTwo = new Guitar("", 0.0, new GuitarSpec(Builder.FENDER.name(), null, null, null, null));
-		Guitar guitarTwo = inventory.search(searchGuitarTwo);
+		}
+		GuitarSpec searchGuitarTwo = new GuitarSpec(Builder.FENDER.name(), null, null, null, null);
+		List<Guitar> guitarTwos = inventory.search(searchGuitarTwo);
+		System.out.println("Test what happens if you enter Fender as a builder and nothing else:");
+		for(Guitar guitarTwo:guitarTwos) {
 		System.out.println(guitarTwo != null ? guitarTwo.toString() : null);
-		Guitar searchGuitarThree = new Guitar("", 0.0, new GuitarSpec(null, null, Type.ELECTRIC.name(), null, null));
-		Guitar guitarThree = inventory.search(searchGuitarThree);
+		}
+		GuitarSpec searchGuitarThree = new GuitarSpec(null, null, Type.ELECTRIC.name(), null, null);
+		List<Guitar> guitarThrees = inventory.search(searchGuitarThree);
+		System.out.println("Test what happens if you enter Electric as a type and nothing else :");
+		for(Guitar guitarThree:guitarThrees) {
 		System.out.println(guitarThree != null ? guitarThree.toString() : null);
-		Guitar searchGuitarFour = new Guitar("", 0.0, new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(), BackWood.ALDER.name(),TopWood.ALDER.name()));
-		Guitar guitarFour = inventory.search(searchGuitarFour);
+		}
+		GuitarSpec searchGuitarFour = new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(), BackWood.ALDER.name(),TopWood.ALDER.name());
+		List<Guitar> guitarFours = inventory.search(searchGuitarFour);
+		System.out.println("Test what happens if you enter the following criteria: bulder=fender, type=electric, topwood=alder, backwood=alder,  model=Stratocastor:");
+		for(Guitar guitarFour:guitarFours) {
 		System.out.println(guitarFour != null ? guitarFour.toString() : null);
-
-
+		}
 	}
 
 }
