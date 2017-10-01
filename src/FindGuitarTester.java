@@ -1,16 +1,25 @@
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * Student: Divya Ninakanti and Nitesh Vuppala
+ */
+
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * This class used to test Guitar and Inventory
  * @author Divya Ninakanti and Nitesh Vuppala
- *
+ * This class used to find guitar by guitar spec and by price 
  */
 
 public class FindGuitarTester {
 
 /**
- *   
+ * This method used run FindGuitarTester
+ * Select option A or B
+ * A) Select search by GuitarSpec
+ * B) Search By price 
  * @param args
  */
 public static void main(String[] args) {
@@ -60,9 +69,11 @@ public static void main(String[] args) {
     	}
 
     }else if("B".equalsIgnoreCase(option)) {
-    	 System.out.println("Search By price, Please enter price");
-    	 double price = scan.nextDouble();
-    	 List<Guitar> guitars = inventory.searchByPrice(price);
+    	 System.out.println("Please enter Minimum price");
+    	 double minPrice = scan.nextDouble();
+    	 System.out.println("Please enter Maximum price");
+    	 double maxPrice = scan.nextDouble();
+    	 List<Guitar> guitars = inventory.searchByPrice(minPrice, maxPrice);
     	 
     	 for(Guitar guitar:guitars) {
      		System.out.println(guitar.toString());
@@ -72,8 +83,8 @@ public static void main(String[] args) {
   }
 
 /**
- * This method used to initialize inventory 
  * @param inventory
+ * This method used to initialize inventory and Adding guitars to empty inventory   
  */
 private static void initializeInventory(Inventory inventory) {
 	inventory.addGuitar("11277", 3999.95, new GuitarSpec(Builder.COLLEINGS.name(), "CJ", Type.ACOUSTIC.name(), BackWood.INDIAN_ROSEWOOD.name(),TopWood.SITKA.name()));

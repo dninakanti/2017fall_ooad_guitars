@@ -1,3 +1,9 @@
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * Student: Divya Ninakanti and Nitesh Vuppala
+ */
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -7,7 +13,7 @@ import org.junit.Test;
 /**
  * 
  *@author Divya Ninakanti and Nitesh Vuppala
- *
+ * This class used TestGuitar with Junit
  */
 public class TestGuitar {
 
@@ -27,12 +33,18 @@ public class TestGuitar {
 		inventory.addGuitar("566-62", 8999.95,new GuitarSpec(Builder.RYAN.name(), "Cathedral", Type.ACOUSTIC.name(), BackWood.COCOBOLO.name(), TopWood.CEDAR.name()));
 		inventory.addGuitar("6 29584", 2100.95,new GuitarSpec(Builder.PRS.name(), "Dave Navarro Signature", Type.ELECTRIC.name(), BackWood.MAHOGANY.name(), TopWood.MAPLE.name()));
 	}
-
+	
+	/**
+	 * Test Inventory addGuitar method 
+	 */
 	@Test
 	public void testAddGuitar() {
 		inventory.addGuitar("22222", 1400.00, new GuitarSpec(Builder.MARTIN.name(), "Stratocastor", Type.ACOUSTIC.name(), BackWood.BRAZILIAN_ROSEWOOD.name(), TopWood.CEDAR.name()));
 	}
-
+	
+	/**
+	 * Test Inventory getGuitar method
+	 */
 	@Test
 	public void testGetGuitar() {
 		//Searching first guitar from inventory
@@ -49,31 +61,38 @@ public class TestGuitar {
 		assertEquals(inputGuitarTwo.toString(), searchGuitarTwo.toString());
 		
 	}
-
+	
+	/**
+	 * Test Inventory search method
+	 */
 	@Test
 	public void testSearch() {
 		GuitarSpec searchGuitar = new GuitarSpec(Builder.GIBSON.name(), null, null, null, null);
 		List<Guitar> guitars = inventory.search(searchGuitar);
 		System.out.println("Test what happens if you enter Gibson as a builder and nothing else :");
 		for(Guitar guitar:guitars) {
+		assert(guitar.getGuitarSpec().match(searchGuitar));
 		System.out.println(guitar != null ? guitar.toString() : null);
 		}
 		GuitarSpec searchGuitarTwo = new GuitarSpec(Builder.FENDER.name(), null, null, null, null);
 		List<Guitar> guitarTwos = inventory.search(searchGuitarTwo);
 		System.out.println("Test what happens if you enter Fender as a builder and nothing else:");
 		for(Guitar guitarTwo:guitarTwos) {
+		assert(guitarTwo.getGuitarSpec().match(searchGuitarTwo));	
 		System.out.println(guitarTwo != null ? guitarTwo.toString() : null);
 		}
 		GuitarSpec searchGuitarThree = new GuitarSpec(null, null, Type.ELECTRIC.name(), null, null);
 		List<Guitar> guitarThrees = inventory.search(searchGuitarThree);
 		System.out.println("Test what happens if you enter Electric as a type and nothing else :");
 		for(Guitar guitarThree:guitarThrees) {
+		assert(guitarThree.getGuitarSpec().match(searchGuitarThree));
 		System.out.println(guitarThree != null ? guitarThree.toString() : null);
 		}
 		GuitarSpec searchGuitarFour = new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(), BackWood.ALDER.name(),TopWood.ALDER.name());
 		List<Guitar> guitarFours = inventory.search(searchGuitarFour);
 		System.out.println("Test what happens if you enter the following criteria: bulder=fender, type=electric, topwood=alder, backwood=alder,  model=Stratocastor:");
 		for(Guitar guitarFour:guitarFours) {
+		assert(guitarFour.getGuitarSpec().match(searchGuitarFour));
 		System.out.println(guitarFour != null ? guitarFour.toString() : null);
 		}
 	}

@@ -1,7 +1,13 @@
 /**
- * This class describes Guitar
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * Student: Divya Ninakanti and Nitesh Vuppala
+ */
+
+/**
  * @author Divya Ninakanti and Nitesh Vuppala
- *
+ * This Guitar class implemented to create Guitar with serial number, price and guitar specification   
  */
 public class Guitar {
 

@@ -1,16 +1,20 @@
 /**
- * 
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * Student: Divya Ninakanti and Nitesh Vuppala
  */
 
 /**
  * @author Divya Ninakanti and Nitesh Vuppala
- *
+ * This GuitarSpec class implemented to create GuitarSpec with builder, model, type, backWood and topWood   
  */
 public class GuitarSpec {
+	
 	private String builder, model, type, backWood, topWood;
 	
 	/**
-	 * 
+	 * GuitarSpec initialize with builder, model, type, backWood and topWood,
 	 * @param builder
 	 * @param model
 	 * @param type
@@ -24,8 +28,9 @@ public class GuitarSpec {
 		this.backWood = backWood;
 		this.topWood = topWood;
 	}
+	
 	/**
-	 * 
+	 * GuitarSpec initialize with empty parameters
 	 */
 	public GuitarSpec() {
 		// TODO Auto-generated constructor stub
@@ -111,9 +116,10 @@ public class GuitarSpec {
 	}
 	
 	/**
-	 * 
+	 * This method used to compare with this GuitarSepc and provided GuitarSpec
+	 * if provided GuitarSpec contains one or more parameters then compare with those parameters  
 	 * @param guitarSpec
-	 * @return
+	 * @return true or false
 	 */
 	public boolean match(GuitarSpec guitarSpec) {
 		boolean isBuilder = true;

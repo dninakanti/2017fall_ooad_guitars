@@ -1,7 +1,13 @@
 /**
- * 
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * Student: Divya Ninakanti and Nitesh Vuppala
+ */
+
+/**
  * @author Divya Ninakanti and Nitesh Vuppala
- *
+ * This enum contatins Builder names
  */
 public enum Builder {
 	FENDER("Fender"),

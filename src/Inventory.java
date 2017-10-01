@@ -1,3 +1,10 @@
+/**
+ * Class: Object-Oriented Design and Analysis
+ * Professor: Orlando Montalvo
+ * Assignment: HW 2
+ * Student: Divya Ninakanti and Nitesh Vuppala
+ */
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,14 +24,10 @@ public class Inventory {
   }
   
   /**
-   * Provide serialNumber,price,builder,model,type,backWood and topWood to add a guitar
+   * Provide serialNumber,price and guitarSpec to add a guitar
    * @param serialNumber
    * @param price
-   * @param builder
-   * @param model
-   * @param type
-   * @param backWood
-   * @param topWood
+   * @param guitarSpec
    */
   public void addGuitar(String serialNumber, double price,GuitarSpec guitarSpec) {
     Guitar guitar = new Guitar(serialNumber, price, guitarSpec);
@@ -47,7 +50,8 @@ public class Inventory {
   }
   
   /**
-   * Search by Guitar using GuitarSpec object with any parameters(builder,model,type,backWood and topWood) 
+   * Search by Guitar using GuitarSpec object with any parameters(builder,model,type,backWood and topWood)
+   * Retrieve Guitar from guitars and compare with searchGuitarSpec using GuitarSpec match. 
    * @param searchGuitar
    * @return Guitar or null
    */
@@ -70,14 +74,15 @@ public class Inventory {
 	}
 
 /**
- * Search by Guitar using price
- * @param price
+ * Search by Guitar using minimum and Maximum price
+ * @param minPrice
+ * @param maxPrice
  * @return
  */
-public List<Guitar> searchByPrice(double price) {
+public List<Guitar> searchByPrice(double minPrice, double maxPrice) {
 	List<Guitar> returnGuitars = new ArrayList<>();
 	for (Guitar guitar : guitars) {
-		if(price ==guitar.getPrice())
+		if(minPrice <= guitar.getPrice() && maxPrice >= guitar.getPrice())
 		returnGuitars.add(guitar);
 		}
 	return returnGuitars;
