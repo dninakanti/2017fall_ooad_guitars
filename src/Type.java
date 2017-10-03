@@ -7,8 +7,8 @@
  *
  */
 /**
- * @author Divya Ninakanti and Nitesh Vuppala
  * This enum contains Guitar Type
+ * @author Divya Ninakanti and Nitesh Vuppala
  *
  */
 public enum Type {

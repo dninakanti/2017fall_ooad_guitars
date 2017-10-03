@@ -25,9 +25,9 @@ public class Inventory {
   
   /**
    * Provide serialNumber,price and guitarSpec to add a guitar
-   * @param serialNumber
-   * @param price
-   * @param guitarSpec
+   * @param serialNumber the serialNumber to set for Guitar
+   * @param price the price to set for Guitar
+   * @param guitarSpec the guitarSpec to set for Guitar
    */
   public void addGuitar(String serialNumber, double price,GuitarSpec guitarSpec) {
     Guitar guitar = new Guitar(serialNumber, price, guitarSpec);
@@ -36,7 +36,7 @@ public class Inventory {
   
   /**
    * Provide serialNumber to retrieve the guitar
-   * @param serialNumber
+   * @param serialNumber the serialNumber to retrieve guitar 
    * @return Guitar or null
    */
   public Guitar getGuitar(String serialNumber) {
@@ -52,7 +52,7 @@ public class Inventory {
   /**
    * Search by Guitar using GuitarSpec object with any parameters(builder,model,type,backWood and topWood)
    * Retrieve Guitar from guitars and compare with searchGuitarSpec using GuitarSpec match. 
-   * @param searchGuitar
+   * @param searchGuitar the searchGuitar to retrieve guitars
    * @return Guitar or null
    */
 	public List<Guitar> search(GuitarSpec seacrhGuitarSpec) {
@@ -75,9 +75,9 @@ public class Inventory {
 
 /**
  * Search by Guitar using minimum and Maximum price
- * @param minPrice
- * @param maxPrice
- * @return
+ * @param minPrice the minPrice to retrieve guitars
+ * @param maxPrice the maxPrice to retrieve guitars
+ * @return List of Guitars
  */
 public List<Guitar> searchByPrice(double minPrice, double maxPrice) {
 	List<Guitar> returnGuitars = new ArrayList<>();

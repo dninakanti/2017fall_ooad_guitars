@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * This class used to find guitar by guitar spec and by price
  * @author Divya Ninakanti and Nitesh Vuppala
- * This class used to find guitar by guitar spec and by price 
+ *  
  */
 
 public class FindGuitarTester {
@@ -20,7 +21,8 @@ public class FindGuitarTester {
  * Select option A or B
  * A) Select search by GuitarSpec
  * B) Search By price 
- * @param args
+ * @param args ignored
+ * 
  */
 public static void main(String[] args) {
     // Set up Rick's guitar inventory
@@ -87,16 +89,16 @@ public static void main(String[] args) {
  * This method used to initialize inventory and Adding guitars to empty inventory   
  */
 private static void initializeInventory(Inventory inventory) {
-	inventory.addGuitar("11277", 3999.95, new GuitarSpec(Builder.COLLEINGS.name(), "CJ", Type.ACOUSTIC.name(), BackWood.INDIAN_ROSEWOOD.name(),TopWood.SITKA.name()));
-	inventory.addGuitar("V95693", 1499.95, new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(),BackWood.ALDER.name(),TopWood.ALDER.name()));
-	inventory.addGuitar("V9512", 1549.95, new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(), BackWood.ALDER.name(), TopWood.ALDER.name()));
-	inventory.addGuitar("122784", 5495.95, new GuitarSpec(Builder.MARTIN.name(), "D-18", Type.ACOUSTIC.name(), BackWood.MAHOGANY.name(), TopWood.ADIRONDARK.name()));
-	inventory.addGuitar("76531", 6295.95, new GuitarSpec(Builder.MARTIN.name(), "OM-28", Type.ACOUSTIC.name(), BackWood.BRAZILIAN_ROSEWOOD.name(), TopWood.ADIRONDARK.name()));
-	inventory.addGuitar("70108276", 2295.95, new GuitarSpec(Builder.GIBSON.name(), "Les Paul", Type.ELECTRIC.name(), BackWood.MAHOGANY.name(), TopWood.MAPLE.name()));
-	inventory.addGuitar("82765501", 1890.95, new GuitarSpec(Builder.GIBSON.name(), "SG '61 Reissue", Type.ELECTRIC.name(), BackWood.MAHOGANY.name(), TopWood.MAHOGANY.name()));
-	inventory.addGuitar("77023", 6275.95,  new GuitarSpec(Builder.MARTIN.name(), "D-28", Type.ACOUSTIC.name(), BackWood.BRAZILIAN_ROSEWOOD.name(), TopWood.ADIRONDARK.name()));
-	inventory.addGuitar("1092", 12995.95, new GuitarSpec(Builder.OLSON.name(), "SJ", Type.ACOUSTIC.name(), BackWood.INDIAN_ROSEWOOD.name(), TopWood.CEDAR.name()));
-	inventory.addGuitar("566-62", 8999.95,new GuitarSpec(Builder.RYAN.name(), "Cathedral", Type.ACOUSTIC.name(), BackWood.COCOBOLO.name(), TopWood.CEDAR.name()));
-	inventory.addGuitar("6 29584", 2100.95,new GuitarSpec(Builder.PRS.name(), "Dave Navarro Signature", Type.ELECTRIC.name(), BackWood.MAHOGANY.name(), TopWood.MAPLE.name()));
+	inventory.addGuitar("11277", 3999.95, new GuitarSpec(Builder.COLLEINGS.name(), "CJ", Type.ACOUSTIC.name(), Wood.INDIAN_ROSEWOOD.name(),Wood.SITKA.name()));
+	inventory.addGuitar("V95693", 1499.95, new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(),Wood.ALDER.name(),Wood.ALDER.name()));
+	inventory.addGuitar("V9512", 1549.95, new GuitarSpec(Builder.FENDER.name(), "Stratocastor", Type.ELECTRIC.name(), Wood.ALDER.name(), Wood.ALDER.name()));
+	inventory.addGuitar("122784", 5495.95, new GuitarSpec(Builder.MARTIN.name(), "D-18", Type.ACOUSTIC.name(), Wood.MAHOGANY.name(), Wood.ADIRONDARK.name()));
+	inventory.addGuitar("76531", 6295.95, new GuitarSpec(Builder.MARTIN.name(), "OM-28", Type.ACOUSTIC.name(), Wood.BRAZILIAN_ROSEWOOD.name(), Wood.ADIRONDARK.name()));
+	inventory.addGuitar("70108276", 2295.95, new GuitarSpec(Builder.GIBSON.name(), "Les Paul", Type.ELECTRIC.name(), Wood.MAHOGANY.name(), Wood.MAPLE.name()));
+	inventory.addGuitar("82765501", 1890.95, new GuitarSpec(Builder.GIBSON.name(), "SG '61 Reissue", Type.ELECTRIC.name(), Wood.MAHOGANY.name(), Wood.MAHOGANY.name()));
+	inventory.addGuitar("77023", 6275.95,  new GuitarSpec(Builder.MARTIN.name(), "D-28", Type.ACOUSTIC.name(), Wood.BRAZILIAN_ROSEWOOD.name(), Wood.ADIRONDARK.name()));
+	inventory.addGuitar("1092", 12995.95, new GuitarSpec(Builder.OLSON.name(), "SJ", Type.ACOUSTIC.name(), Wood.INDIAN_ROSEWOOD.name(), Wood.CEDAR.name()));
+	inventory.addGuitar("566-62", 8999.95,new GuitarSpec(Builder.RYAN.name(), "Cathedral", Type.ACOUSTIC.name(), Wood.COCOBOLO.name(), Wood.CEDAR.name()));
+	inventory.addGuitar("6 29584", 2100.95,new GuitarSpec(Builder.PRS.name(), "Dave Navarro Signature", Type.ELECTRIC.name(), Wood.MAHOGANY.name(), Wood.MAPLE.name()));
   }
 }

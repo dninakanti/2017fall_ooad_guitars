@@ -6,24 +6,22 @@
  */
 
 /**
+ * This Guitar class implemented to create Guitar with serial number, price and guitar specification
  * @author Divya Ninakanti and Nitesh Vuppala
- * This Guitar class implemented to create Guitar with serial number, price and guitar specification   
+ *    
  */
 public class Guitar {
 
   private String serialNumber;
   private double price;
   private GuitarSpec guitarSpec;
- /**
-  * 
-  * @param serialNumber
-  * @param price
-  * @param builder
-  * @param model
-  * @param type
-  * @param backWood
-  * @param topWood
-  */
+
+  /**
+ * 
+ * @param serialNumber the serialNumber to set
+ * @param price the price to set
+ * @param guitarSpec the guitarSpec to set
+ */
  public Guitar(String serialNumber, double price, GuitarSpec guitarSpec) {
     this.serialNumber = serialNumber;
     this.price = price;

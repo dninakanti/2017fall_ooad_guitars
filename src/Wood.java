@@ -8,11 +8,11 @@
  */
 
 /**
+ * This enum contains Wood types of Backwood and Topwood
  * @author Divya Ninakanti and Nitesh Vuppala
- * This enum contatins Backwood types
  *
  */
-public enum BackWood {
+public enum Wood {
 INDIAN_ROSEWOOD("Indian Rosewood"),
 BRAZILIAN_ROSEWOOD("Brazilian Rosewood"),
 MAHOGANY("Mahogany"),
@@ -29,7 +29,7 @@ private final String bacWood;
  * 
  * @param bacWood
  */
-private BackWood(final String bacWood) {
+private Wood(final String bacWood) {
     this.bacWood = bacWood;
 }
 

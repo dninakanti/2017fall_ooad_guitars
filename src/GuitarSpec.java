@@ -14,12 +14,12 @@ public class GuitarSpec {
 	private String builder, model, type, backWood, topWood;
 	
 	/**
-	 * GuitarSpec initialize with builder, model, type, backWood and topWood,
-	 * @param builder
-	 * @param model
-	 * @param type
-	 * @param backWood
-	 * @param topWood
+	 * GuitarSpec initialize with builder, model, type, backWood and topWood
+	 * @param builder the builder to set 
+	 * @param model the model to set
+	 * @param type  the type to set
+	 * @param backWood the backWood to set
+	 * @param topWood the topWood to set
 	 */
 	public GuitarSpec(String builder, String model, String type, String backWood, String topWood) {
 		this.builder = builder;
